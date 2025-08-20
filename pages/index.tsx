@@ -1,23 +1,12 @@
-// import Image from "next/image";
-// import { Geist, Geist_Mono } from "next/font/google";
+import FilterItems from "@/components/common/FilterItems";
 import Pill from "@/components/common/Pill";
-
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 
 
 const Home:React.FC = () => {
   return (
-    <main>
+    <main className="container mx-auto px-5 lg:px-10">
+      <FilterItems />
       <Pill />
       Home
       
