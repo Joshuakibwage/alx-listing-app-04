@@ -48,10 +48,3 @@ export interface PropertyProps {
   reviews: ReviewProps[];
 }
 
-export interface iAppProps {
-  name: string;
-  title: string;
-  imageUrl: string;
-  description: string;
-  id: number;
-}

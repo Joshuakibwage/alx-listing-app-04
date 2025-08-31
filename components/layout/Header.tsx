@@ -1,10 +1,11 @@
-'use client'
+// 'use client'
 import Image from 'next/image';
 import Logo from '@/public/icons/bag.png';
 import Button from '@/components/common/Button';
 import ManiLogo from '@/public/icons/Vector(1).svg';
 import Search from '@/public/icons/Magnifer.svg';
 import Profile from '@/public/icons/Vector.png';
+import { RegisterLink, LoginLink } from '@kinde-oss/kinde-auth-nextjs/components';
 
 
 
@@ -79,14 +80,18 @@ const Header: React.FC = () => {
         </form>
         <div className="flex ">
           <div className="hidden lg:flex gap-4">
-            <Button 
+            <LoginLink 
               label="Sign In"
               className="bg-[#34967c] px-6 py-2 rounded-full text-white cursor-pointer"
-            />
-            <Button 
+            >
+                Login
+            </LoginLink>
+            <RegisterLink 
               label="Sign Up"
               className="bg-white  border border-gray-200 px-6 py-2 rounded-full text-black cursor-pointer"
-            />
+            >
+                Register
+            </RegisterLink>
           </div>
           <div className="block lg:hidden bg-[#34967c]">
             <Image
