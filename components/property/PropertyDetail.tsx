@@ -17,6 +17,8 @@ const PropertyDetail: React.FC<{property: PropertyProps}> = ({property}) => {
                 <Image 
                     src={property.image} 
                     alt={property.name} 
+                    height={400} 
+                    width={600}
                     className="col-span-2 w-full h-96 object-cover rounded-lg" 
                 />
                 {/* Add more images */}

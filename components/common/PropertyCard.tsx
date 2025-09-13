@@ -1,8 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+// import { PropertyProps } from "@/types";
+
+// interface PropertyCardProps {
+//   index?: number;
+//   property: PropertyProps;
+// } 
 
 
 const PropertyCard:React.FC = ({ index, property}) => {
     return (
+      <Link href={`/property/${property.name}`} >
         <div 
               key={index}
               className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group"
@@ -41,6 +50,8 @@ const PropertyCard:React.FC = ({ index, property}) => {
                 )}
               </div>
             </div>
+    
+      </Link>
     )
 }
 

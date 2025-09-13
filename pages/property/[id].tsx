@@ -1,37 +1,47 @@
 import { useRouter } from "next/router";
-import axios from "axios";
-import { useState, useEffect } from "react";
+// import axios from "axios";
+// import { useState, useEffect } from "react";
 import PropertyDetail from "@/components/property/PropertyDetail";
+import { PROPERTYLISTINGSAMPLE } from "@/constants";
+// import { PropertyProps } from "@/types";
 
 export default function PropertyDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [property, setProperty] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const property = PROPERTYLISTINGSAMPLE.find((item) => item.name === id);
 
-  useEffect(() => {
-    const fetchProperty = async () => {
-      if (!id) return;
-      try {
-        const response = await axios.get(`/api/properties/${id}`);
-        setProperty(response.data);
-      } catch (error) {
-        console.error("Error fetching property details:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // const [property, setProperty] = useState(null);
+  // const [loading, setLoading] = useState(true);
 
-    fetchProperty();
-  }, [id]);
+  // useEffect(() => {
+  //   const fetchProperty = async () => {
+  //     if (!id) return;
+  //     try {
+  //       const response = await axios.get(`/api/properties/${id}`);
+  //       setProperty(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching property details:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  //   fetchProperty();
+  // }, [id]);
 
-  if (!property) {
-    return <p>Property not found</p>;
-  }
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
 
-  return <PropertyDetail property={property} />;
+  // if (!property) {
+  //   return <p>Property not found</p>;
+  // }
+    if (!property) return <p>Property not found</p>;
+
+
+  return (
+    <div>
+      <PropertyDetail property={property} />;
+    </div>
+  )
 }
