@@ -1,14 +1,20 @@
 import FilterItems from "@/components/common/FilterItems";
-import Pill from "@/components/common/Pill";
 import { PROPERTYLISTINGSAMPLE } from "@/constants";
 import { PropertyProps } from "@/types";
-import React from "react";
+import React, { useState} from "react";
 import Card from "@/components/common/Card";
 import Image from "next/image";
 import PropertyCard from "@/components/common/PropertyCard";
 
 
 const Home:React.FC = () => {
+
+  const [ activeCategory, setActiveCategory ] = useState<string>("All");
+
+  const categories: string[] = ["All", "Luxury Villa", "Pool", "Free Parking", "Mountain View", "Fireplace", "Self Checkin", "City Center", "Pet Friendly", "City View", "Free WiFi", "24h Checkin", "Beachfront", "Ocean View", "Breakfast Included", "Ski-in/Ski-out", "Golf Course", "Spa", "Family Friendly"];
+
+  const filteredCategories = PROPERTYLISTINGSAMPLE.filter((category) => activeCategory === "All" || category.category === activeCategory);
+
   return (
     <main className="container mx-auto px-5 lg:px-10 min-h-screen">
       <FilterItems />
@@ -32,7 +38,21 @@ const Home:React.FC = () => {
         </div>
       </div>
 
-      <Pill />
+      <div className="flex flex-wrap gap-3 my-10">
+        {
+          categories.map((category, index) => (
+            <button 
+              key={index}
+              onclick={() => setActiveCategory(category)}
+              className={`px-5 py-2 rounded-full transition-colors duration-300 capitalize cursor-pointer ${
+                  activeCategory === category ? "bg-green-400 text-white font-semibold" : "bg-gray-200 text-black hover:bg-green-700 hover:text-white`"
+                }`}
+            >
+              {category}
+            </button>
+          ))
+        }
+      </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
         {
